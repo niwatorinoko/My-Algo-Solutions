@@ -1,0 +1,7 @@
+n = int(input())
+s = input()
+
+if "(" and ")" not in s:
+    print("no")
+else:
+    print("yes")
