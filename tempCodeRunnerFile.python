@@ -1,0 +1,33 @@
+'''
+n = int(input())
+total_res = {}
+for i in range(1,n+1):
+    res = input().split()
+    res = int(res[0])/(int(res[0])+int(res[1]))
+    total_res[i] = res
+
+print(total_res)
+def get_keys_by_value(dictionary, value):
+    return [key for key, val in dictionary.items() if val == value]
+
+result_list = []
+for i in reversed(sorted(total_res.values())):
+    for j in [key for key, val in total_res.items() if val == i]:
+    #for j in get_keys_by_value(total_res, i):
+        if j not in result_list:
+            result_list.append(j)
+            print(j, end=" ")
+'''
+n, m = input().split()
+c = input().split()
+d = input().split()
+p = input().split()
+
+res = 0
+for i in range(int(n)):
+    if c[i] not in d:
+        res += int(p[0])
+    else:
+        res += int(p[d.index(c[i])+1])
+
+print(res)
