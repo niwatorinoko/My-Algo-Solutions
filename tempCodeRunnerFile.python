@@ -1,36 +1,81 @@
-n, m = input().split()
+"""n, m, p = input().split()
 n = int(n)
 m = int(m)
-n_li = []
-m_li = []
+p = int(p)
+k = 1
+ans = 0
+for i in range(1, n+1):
+    if  i == m:
+        ans += 1
+    if i == m+k*p:
+        ans += 1
+        k += 1
+print(ans)"""
+"""n = int(input())
+ans = 0
+ans_li = []
 for i in range(n):
-    temp = int(input())
-    n_li.append(temp)
-for i in range(m):
-    temp = int(input())
-    m_li.append(temp)
+    n = input().split()
+    for k in range(int(n[0]),int(n[1])):
+        for l in range(int(n[2]),int(n[3])):
+            if [k,l] in ans_li:
+                continue
+            ans_li.append([k,l])
+            ans += 1
 
-ans = [0]*n
-np = 0
-for i in range(m):
-    #m_li[i]が0になるまで繰り返す
-    while m_li[i] != 0:
-        #もしm_li[i]がn_li[np]より小さかったら、そのままans[np]にm_li[i]を入れる。
-        if m_li[i] < n_li[np]:
-            ans[np] += m_li[i]
-            m_li[i] = 0
-            if np+1 == n:
-                np = 0
-            else:
-                np += 1
-        #もしm_li[i]がn_li[np]より大きかったら、ans[np]にn_li[np]を入れる。
-        else:
-            ans[np] += n_li[np]
-            #m_li[i]はn_li[np]減る。
-            m_li[i] -= n_li[np]
-            if np+1 == n:
-                np = 0
-            else:
-                np += 1
+print(ans)"""
+"""n = int(input())
+ans_set = set()
+for i in range(n):
+    n = input().split()
+    for k in range(int(n[0]), int(n[1])):
+        for l in range(int(n[2]), int(n[3])):
+            ans_set.add((k, l))  # セットに追加
+
+print(len(ans_set))"""
+
+"""
+
+n, d, p = map(int, input().split())
+f = list(map(int, input().split()))
+f.sort(reverse=True)  # リスト f を降順にソート
+
+total_sum = sum(f)  # 降順ソート済みのリスト f の合計値を計算
+
+ansli = []
+partial_sum = total_sum  # 部分合計値を初期化
+for j in range(n // d + 2):
+    if j == 0:
+        ansli.append(total_sum)
+    elif j * d > n:
+        ansli.append(j * p)
+    else:
+        partial_sum -= sum(f[(j - 1) * d:j * d])  # 部分合計値を更新
+        n = j * p + partial_sum  # 新しい合計値を計算
+        ansli.append(n)
+
+print(min(ansli))
+"""
+
+from itertools import combinations
+
+
+n = int(input())
+a = list(map(int, input().split()))
+
+def check(i,j,k,li):
+    print(i,j,k)
+    if i<j<k:
+        print("Yes!")
+        if li[i]==li[k]:
+            if li[i]!=li[j]:
+                return True
+    return False
+
+ans = 0
+for combination in combinations(a, 3):
+    combination = list(combination)
+    if check(combination[0],combination[1],combination[2],a):
+        ans += 1
 
 print(ans)
