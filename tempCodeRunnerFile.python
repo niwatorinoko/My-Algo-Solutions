@@ -1,0 +1,10 @@
+h, w = input().split()
+n, t = input().split()
+h = int(h)
+w = int(w)
+n = int(n)
+t = int(t)
+print(h,w,n,t)
+area = [[]*h]*w
+print(area)
+#for i in range(n):
