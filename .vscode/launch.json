@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/reanogasawara/Desktop/DataStructure/1123",
-      "program": "/Users/reanogasawara/Desktop/DataStructure/1123/build/Debug/outDebug"
+      "cwd": "/Users/reanogasawara/Downloads",
+      "program": "/Users/reanogasawara/Downloads/build/Debug/outDebug"
     }
   ]
 }
